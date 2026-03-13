@@ -157,7 +157,7 @@ else{
 
 html +=
 "<div class='train last'>" +
-"本日最後の１番線到着列車です" +
+"本日最後の逗子駅１番線到着列車です" +
 "</div>";
 
 }
@@ -249,3 +249,4 @@ kamakura:"鎌倉"
 return names[key];
 
 }
+
