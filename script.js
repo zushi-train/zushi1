@@ -70,6 +70,31 @@ trains = trains_holiday;
 trains = trains_weekday;
 }
 
+// ===============================
+// ダイヤ表示
+// ===============================
+
+const diagramType =
+document.getElementById("diagramType");
+
+const timetableVersion =
+document.getElementById("timetableVersion");
+
+if(isWeekend || isHoliday){
+
+diagramType.innerHTML =
+"本日は<span class='holiday'>土休日ダイヤ</span>";
+
+}else{
+
+diagramType.innerHTML =
+"本日は<span class='weekday'>平日ダイヤ</span>";
+
+}
+
+// ダイヤ改正表示
+timetableVersion.innerHTML =
+"2026.3.14改正";
 
 // ===============================
 // 列車検索
@@ -248,5 +273,6 @@ kamakura:"鎌倉"
 return names[key];
 
 }
+
 
 
