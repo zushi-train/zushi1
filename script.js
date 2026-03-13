@@ -139,8 +139,7 @@ return;
 // 表示作成
 // ===============================
 
-let html = "";
-
+let html = "<h3>次の逗子駅１番線到着列車</h3>";
 
 // 1本目
 html += createTrainCard(next1,station);
@@ -249,4 +248,5 @@ kamakura:"鎌倉"
 return names[key];
 
 }
+
 
