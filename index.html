@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ズシイチ～逗子駅１番線到着列車案内～</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="titlebar">
+
+<div class="line yokosuka"></div>
+
+<div class="title">
+
+<h1>ズシイチ</h1>
+
+<div class="subtitle">
+逗子駅１番線到着列車案内
+</div>
+
+<div id="diagramType"></div>
+<div id="timetableVersion"></div>
+
+</div>
+
+<div class="line shonan"></div>
+
+</div>
+<div class="box">
+
+<label>現在地の駅</label>
+
+<select id="station">
+
+<option value="tokyo">東京</option>
+<option value="shimbashi">新橋</option>
+<option value="shinagawa">品川</option>
+<option value="nishioi">西大井</option>
+<option value="musashi">武蔵小杉</option>
+<option value="shinkawasaki">新川崎</option>
+<option value="yokohama">横浜</option>
+<option value="hodogaya">保土ケ谷</option>
+<option value="higashitotsuka">東戸塚</option>
+<option value="totsuka">戸塚</option>
+<option value="ofuna">大船</option>
+<option value="kitakamakura">北鎌倉</option>
+<option value="kamakura">鎌倉</option>
+
+</select>
+<button onclick="searchTrain()">
+検索
+</button>
+
+</div>
+
+<div id="result"></div>
+
+<script src="trains_weekday.js"></script>
+<script src="trains_holiday.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

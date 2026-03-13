@@ -1,0 +1,218 @@
+/* =========================
+   基本レイアウト
+========================= */
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:#f4f4f4;
+margin:0;
+padding:20px;
+max-width:420px;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* =========================
+   タイトル
+========================= */
+
+.titlebar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:20px;
+}
+
+.title{
+text-align:center;
+flex-grow:1;
+}
+
+.title h1{
+margin:0;
+font-size:28px;
+}
+
+.subtitle{
+font-size:14px;
+color:#555;
+margin-top:-4px;
+}
+
+/* タイトル横ライン */
+
+.line{
+width:100px;
+height:18px;
+border-radius:3px;
+}
+
+/* 横須賀線カラー */
+
+.yokosuka{
+background:linear-gradient(
+to bottom,
+#0033aa 50%,
+#e8c7a1 50%
+);
+}
+
+/* 湘南新宿ラインカラー */
+
+.shonan{
+background:linear-gradient(
+to bottom,
+#ff7a00 50%,
+#00aa55 50%
+);
+}
+
+/* =========================
+   駅選択ボックス
+========================= */
+
+.box{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+label{
+font-size:14px;
+display:block;
+margin-bottom:5px;
+}
+
+select{
+width:100%;
+padding:10px;
+font-size:16px;
+border-radius:6px;
+border:1px solid #ccc;
+margin-bottom:10px;
+}
+
+button{
+width:100%;
+padding:12px;
+font-size:16px;
+background:#333;
+color:white;
+border:none;
+border-radius:6px;
+}
+
+/* =========================
+   列車カード
+========================= */
+
+.train{
+background:white;
+padding:18px;
+margin-bottom:15px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* カード上ライン */
+
+.linebar{
+height:16px;
+border-radius:6px 6px 0 0;
+margin:-18px -18px 10px -18px;
+}
+
+.linebar.yokosuka{
+background:linear-gradient(
+to bottom,
+#0033aa 50%,
+#e8c7a1 50%
+);
+}
+
+.linebar.shonan{
+background:linear-gradient(
+to bottom,
+#ff7a00 50%,
+#00aa55 50%
+);
+}
+
+/* =========================
+   列車情報
+========================= */
+
+.train-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* 発車時刻（大きく表示） */
+
+.depart{
+font-size:40px;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+/* 行き先 */
+
+.dest{
+font-size:20px;
+font-weight:500;
+}
+
+/* 到着時刻 */
+
+.arrive{
+margin-top:6px;
+color:#555;
+font-size:15px;
+}
+
+/* 路線名 */
+
+.linename{
+font-size:14px;
+color:#666;
+margin-top:6px;
+}
+
+.last{
+margin-top:12px;
+font-size:14px;
+color:#666;
+text-align:center;
+}
+
+/* ダイヤ表示 */
+
+#diagramType{
+font-size:14px;
+margin-top:6px;
+}
+
+/* 平日ダイヤ */
+
+.weekday{
+color:#00aaff;
+font-weight:bold;
+}
+
+/* 土休日ダイヤ */
+
+.holiday{
+color:#ff66aa;
+font-weight:bold;
+}
+
+/* ダイヤ改正表示 */
+
+#timetableVersion{
+font-size:12px;
+color:#888;
+margin-top:2px;
+}
