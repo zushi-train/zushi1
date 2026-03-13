@@ -1,8 +1,3 @@
-// ダイヤ改正バージョン
-
-document.getElementById("timetableVersion").innerText =
-"2026.3.14改正";
-
 // ===============================
 // 日本の祝日判定
 // ===============================
@@ -14,6 +9,7 @@ const m = date.getMonth()+1;
 const d = date.getDate();
 const w = date.getDay();
 
+// 固定祝日
 const fixed = [
 [1,1],[2,11],[2,23],[4,29],
 [5,3],[5,4],[5,5],[8,11],
@@ -51,8 +47,8 @@ if(d===shuubun) return true;
 }
 
 return false;
-
 }
+
 
 // ===============================
 // 平日 / 土休日 判定
@@ -74,22 +70,6 @@ trains = trains_holiday;
 trains = trains_weekday;
 }
 
-// ダイヤ表示
-
-const diagram =
-document.getElementById("diagramType");
-
-if(isWeekend || isHoliday){
-
-diagram.innerHTML =
-"本日は <span class='holiday'>土休日ダイヤ</span>";
-
-}else{
-
-diagram.innerHTML =
-"本日は <span class='weekday'>平日ダイヤ</span>";
-
-}
 
 // ===============================
 // 列車検索
@@ -104,13 +84,14 @@ const now = new Date();
 const nowMinutes =
 now.getHours()*60 + now.getMinutes();
 
-let next = [];
+let next1 = null;
+let next2 = null;
 
-trains.forEach(train=>{
+for(const train of trains){
 
 const time = train[station];
 
-if(!time) return;
+if(!time) continue;
 
 const parts = time.split(":");
 
@@ -119,28 +100,78 @@ parseInt(parts[0])*60 +
 parseInt(parts[1]);
 
 if(minutes >= nowMinutes){
-next.push(train);
+
+if(!next1){
+next1 = train;
 }
 
-});
+else if(!next2){
+next2 = train;
+break;
+}
 
-let html =
-"<h3>次の逗子1番線到着列車</h3>";
+}
 
-if(next.length === 0){
+}
 
-html +=
-"<div class='train'>本日の1番線到着列車は終了しました</div>";
+const result =
+document.getElementById("result");
 
-document.getElementById("result").innerHTML = html;
+
+// ===============================
+// 本日終了表示
+// ===============================
+
+if(!next1){
+
+result.innerHTML =
+"<div class='train'>" +
+stationName(station) +
+"から出る本日の逗子駅１番線到着列車は終了しました。" +
+"</div>";
 
 return;
 
 }
 
-const list = next.slice(0,2);
 
-list.forEach((train,index)=>{
+// ===============================
+// 表示作成
+// ===============================
+
+let html = "";
+
+
+// 1本目
+html += createTrainCard(next1,station);
+
+
+// 2本目あり
+if(next2){
+
+html += createTrainCard(next2,station);
+
+}
+// 1本のみ
+else{
+
+html +=
+"<div class='train last'>" +
+"本日最後の１番線到着列車です" +
+"</div>";
+
+}
+
+result.innerHTML = html;
+
+}
+
+
+// ===============================
+// 列車カード作成
+// ===============================
+
+function createTrainCard(train,station){
 
 let lineClass="";
 let lineName="";
@@ -155,7 +186,7 @@ lineClass="shonan";
 lineName="湘南新宿ライン";
 }
 
-html +=
+let html =
 
 "<div class='train'>" +
 
@@ -164,37 +195,32 @@ html +=
 "<div class='train-top'>" +
 
 "<div class='depart'>" +
-stationName(station) + " " +
-train[station] + "発</div>" +
+stationName(station) +
+" " +
+train[station] +
+"発</div>" +
 
 "<div class='dest'>" +
-train.dest + "行</div>" +
+train.dest +
+"行</div>" +
 
 "</div>" +
 
 "<div class='arrive'>" +
-"逗子 " + train.zushi + "着</div>" +
+"逗子 " +
+train.zushi +
+"着</div>" +
 
 "<div class='linename'>" +
 lineName +
+"</div>" +
+
 "</div>";
 
-if(index===0 && next.length===1){
-
-html +=
-"<div class='last'>" +
-"本日最後の1番線到着列車です" +
-"</div>";
+return html;
 
 }
 
-html += "</div>";
-
-});
-
-document.getElementById("result").innerHTML = html;
-
-}
 
 // ===============================
 // 駅名表示
