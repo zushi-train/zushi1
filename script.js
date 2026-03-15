@@ -47,12 +47,22 @@ if(d===shuubun) return true;
 }
 
 return false;
+
 }
 
 
 // ===============================
-// 平日 / 土休日 判定
+// 列車データ変数
 // ===============================
+
+let trains;
+
+
+// ===============================
+// ダイヤ判定＋表示更新
+// ===============================
+
+function updateDiagram(){
 
 const today = new Date();
 
@@ -62,45 +72,36 @@ today.getDay() === 0 || today.getDay() === 6;
 const isHoliday =
 isJapaneseHoliday(today);
 
-let trains;
-
 if(isWeekend || isHoliday){
+
 trains = trains_holiday;
-}else{
-trains = trains_weekday;
-}
 
-// ===============================
-// ダイヤ表示
-// ===============================
-
-const diagramType =
-document.getElementById("diagramType");
-
-const timetableVersion =
-document.getElementById("timetableVersion");
-
-if(isWeekend || isHoliday){
-
-diagramType.innerHTML =
+document.getElementById("diagramType").innerHTML =
 "本日は<span class='holiday'>土休日ダイヤ</span>";
 
 }else{
 
-diagramType.innerHTML =
+trains = trains_weekday;
+
+document.getElementById("diagramType").innerHTML =
 "本日は<span class='weekday'>平日ダイヤ</span>";
 
 }
 
-// ダイヤ改正表示
-timetableVersion.innerHTML =
+document.getElementById("timetableVersion").innerHTML =
 "2026.3.14改正";
+
+}
+
 
 // ===============================
 // 列車検索
 // ===============================
 
 function searchTrain(){
+
+// ★検索時に毎回ダイヤ判定
+updateDiagram();
 
 const station =
 document.getElementById("station").value;
@@ -274,5 +275,5 @@ return names[key];
 
 }
 
-
-
+// ページ表示時にダイヤ表示
+updateDiagram();
