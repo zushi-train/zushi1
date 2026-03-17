@@ -255,19 +255,19 @@ function stationName(key){
 
 const names = {
 
-tokyo:"東京",
-shimbashi:"新橋",
-shinagawa:"品川",
-nishioi:"西大井",
-musashi:"武蔵小杉",
-shinkawasaki:"新川崎",
-yokohama:"横浜",
-hodogaya:"保土ケ谷",
-higashitotsuka:"東戸塚",
-totsuka:"戸塚",
-ofuna:"大船",
+kamakura:"鎌倉",
 kitakamakura:"北鎌倉",
-kamakura:"鎌倉"
+ofuna:"大船",
+totsuka:"戸塚",
+higashitotsuka:"東戸塚",
+hodogaya:"保土ケ谷",
+yokohama:"横浜",
+shinkawasaki:"新川崎",
+musashi:"武蔵小杉",
+nishioi:"西大井",
+shinagawa:"品川",
+shimbashi:"新橋",
+tokyo:"東京"
 
 };
 
